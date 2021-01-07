@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <style>
+        a.two:link {color:#ff0000;}
+        a.two:visited {color:#0000ff;}
+        a.two:hover {font-size:150%;}
+        a:link { text-decoration: none}
+    </style>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+
+           <strong>Fase 1: Heurística {{ phase_one }}<br></strong>
+            <strong>Fase 2: PA-Star {{ phase_two }}<br></strong>
+        </div>
+        <div class="col-sm aligned-center">
+            <h1>Alinhamento Múltiplo</h1>
+
+            <div class="table-responsive">
+                <table id="result_sequencia" class="table">
+
+                </table>
+            </div>
+
+            <br><div class="aligned-center"><strong >Similaridade: {{ similarity }}</strong></div>
+        </div>
+        <div class="col-sm">
+            <a href="{% url 'view_logado' %}" class="two">Voltar</a><br>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+{% block static %}
+    {{ result|json_script:"result" }}
+    <script src="{% static 'js/colorir_sequencia.js' %}"></script>
+{% endblock static %}
+
+

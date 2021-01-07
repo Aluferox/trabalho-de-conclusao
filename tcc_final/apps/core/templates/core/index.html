@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+
+            {% if not user.is_authenticated  %}
+
+                <ul class="nav justify-content-center nav-fill">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'login' %}">login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'registrar' %}" class="nav-link">Cadastrar</a> <br>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#"></a>
+                  </li>
+                </ul>
+
+            {% elif user.is_authenticated %}
+                Conectado como: {{ user }}
+            {% endif %}
+        </div>
+        <div class="col-sm text-center" >
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                <button type="submit" class="btn btn-info">enviar</button>
+            </form>
+        </div>
+        <div class="col-sm">
+            {# One of three columns#}
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}

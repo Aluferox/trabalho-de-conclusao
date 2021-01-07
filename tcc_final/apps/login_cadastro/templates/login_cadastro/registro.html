@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block tilte %}
+    Criar Usuário {{ block.super }}
+{% endblock tilte %}
+
+{% block content %}
+       <div class="container">
+      <div class="row">
+        <div class="col-sm">
+            {% if messages %}
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col-sm-5.1">
+          <div class="text-center">
+            <form class="form-signin" method="post">
+                {% csrf_token %}
+                <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Criar Conta na Aplicação Msa-Astar</h1>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                {{ form|bootstrap }}
+                <label for="inputPassword" class="sr-only">Password</label>
+                 <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Registrar</button>
+                <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+            </form>
+
+        </div>
+        </div>
+        <div class="col-sm">
+            {# One of three columns #}
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+

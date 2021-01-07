@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+            {% if user.is_authenticated %}
+              Conectado como: {{ user }}
+            {% endif %}
+        </div>
+        <div class="col-sm">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit">enviar</button>
+            </form>
+        </div>
+        <div class="col-sm">
+          <a href="{% url 'logout' %}">Logout</a>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+{% endblock content %}
