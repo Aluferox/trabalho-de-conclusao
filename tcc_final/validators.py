@@ -21,6 +21,6 @@ def validate(file_data, manual_text):
         if file_data is None and manual_text == '':
             raise ValidationError('Escolha Ao Menos Um Campo Para Enviar.')
 
-        # Verifica se a String Contém Apenas Letras
-        if not manual_text.replace('\r\n', '').isalpha():
-             raise ValidationError('Representação Numérica Não é Suportada.')
+        # # Verifica se a String Contém Apenas Letras
+        # if not manual_text.replace('\r\n', '').isalpha():
+        #      raise ValidationError('Representação Numérica Não é Suportada.')

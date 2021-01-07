@@ -1,19 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block content %}
-    <style>
-        a.two:link {color:#ff0000;}
-        a.two:visited {color:#0000ff;}
-        a.two:hover {font-size:150%;}
-        a:link { text-decoration: none}
-    </style>
     <div class="container">
       <div class="row">
         <div class="col-sm">
-            <a href="{% url 'registrar' %}">Cadastrar</a><br>
-           <strong>Fase 1: Heurística {{ phase_one }}<br></strong>
+            <strong>Fase 1: Heurística {{ phase_one }}<br></strong>
             <strong>Fase 2: PA-Star {{ phase_two }}<br></strong>
         </div>
         <div class="col-sm text-center">
@@ -29,7 +21,7 @@
             </div>
         </div>
         <div class="col-sm">
-          <a  href="{% url 'home' %}" class="two">Home</a>
+            {#Uso Futuro#}
         </div>
       </div>
     </div>

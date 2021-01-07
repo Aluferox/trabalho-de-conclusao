@@ -14,7 +14,7 @@ def view_logado(request):
             else:
                 text_simple = form.cleaned_data['manual_text']
                 result, infos = handle_uploaded_file(text_simple)
-
+            request.path = '/msa/star/'
             return render(request, 'msa_astar_logado/resultado.html', {'result': result,
                                                            'phase_one': infos[0],
                                                            'phase_two': infos[1],

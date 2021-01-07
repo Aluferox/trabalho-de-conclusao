@@ -1,17 +1,12 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
 from .forms import CreateUsers
-from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+from django.views.generic import CreateView
 
-def registro(request):
 
-    if request.method =='POST':
-        form = CreateUsers(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request,'Você Foi Cadastrado com Sucesso.')
-            return redirect('login')
-    else:
-        form = CreateUsers()
-
-    return render(request, 'login_cadastro/registro.html', {'form':form})
-
+class CreateUserView(CreateView):
+    model = User
+    template_name = 'login_cadastro/registro.html'
+    form_class = CreateUsers
+    success_url = reverse_lazy('login')

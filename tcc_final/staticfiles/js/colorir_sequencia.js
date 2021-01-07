@@ -1,6 +1,6 @@
 let table = "";
 const sequencia = JSON.parse(document.getElementById('result').textContent)
-console.log('teste')
+
 for (let i = 0; i < sequencia.length ; i++) {
   table +="<tr>"
     for (let j = 0; j < sequencia[i].length ; j++) {
@@ -52,7 +52,6 @@ for (let i = 0; i < sequencia.length ; i++) {
         } else if (sequencia[i][j] === "-"){
             table += `<td style="color: #b50baf; font-weight:bold;">${sequencia[i][j]}</td>`
         }
-
     }
     table += "</tr>"
     document.getElementById("result_sequencia").innerHTML = table

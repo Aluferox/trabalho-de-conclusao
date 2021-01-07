@@ -3,12 +3,6 @@
 
 
 {% block content %}
-    <style>
-        a.two:link {color:#ff0000;}
-        a.two:visited {color:#0000ff;}
-        a.two:hover {font-size:150%;}
-        a:link { text-decoration: none}
-    </style>
     <div class="container">
       <div class="row">
         <div class="col-sm">
@@ -28,8 +22,9 @@
             <br><div class="aligned-center"><strong >Similaridade: {{ similarity }}</strong></div>
         </div>
         <div class="col-sm">
-            <a href="{% url 'view_logado' %}" class="two">Voltar</a><br>
+            {#Uso futuro#}
         </div>
+          <a href="{% url 'view_logado' %}" id="content" class="btn btn-warning"> Voltar </a>
       </div>
     </div>
 

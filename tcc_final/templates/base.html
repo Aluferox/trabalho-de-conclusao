@@ -9,10 +9,37 @@
 
     <title>{% block title %} {% endblock title %}</title>
 </head>
-<body class="jumbotron jumbotron-fluid">
+<body style="background-color:#E9ECEF ">
 
-    <div class="container-fluid">
-         {% block content %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+         <a class="navbar-brand" href="https://www.ifb.edu.br/">
+            <img src="/media/IFBVertical.png" width="50" height="50" alt="ifb">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% if not user.is_authenticated %}
+                    <li class="nav-item active">
+                        <a class="nav-item nav-link active" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                     <a class="nav-item nav-link active" href="{% url 'registrar' %}">Cadastrar</a>
+                    </li>
+                {% elif user.is_authenticated %}
+                    <li class="nav-item active">
+                       <h3> Conectado como: {{ user }}</h3>
+                    </li>
+                {% endif %}
+            </ul>
+            {% if user.is_authenticated %}
+                <a class="btn btn-danger my-2 my-sm-0" href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+            {% if request.path != '/' and not user.is_authenticated  %}
+                <a class="btn btn-secondary my-2 my-sm-0" href="{% url 'home' %}">Home</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid">
+        {% block content %}
 
         {% endblock content %}
     </div>

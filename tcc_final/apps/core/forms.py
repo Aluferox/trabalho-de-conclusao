@@ -3,7 +3,7 @@ from validators import validate
 
 
 class HomeForm(forms.Form):
-    manual_text = forms.CharField(required=False, label='', widget=forms.Textarea)
+    manual_text = forms.CharField(required=False, label='', widget=forms.Textarea())
 
     file_data = forms.FileField(required=False,
                                 label='',

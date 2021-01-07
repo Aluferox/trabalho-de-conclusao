@@ -1,29 +1,27 @@
 {% extends 'base.html' %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+
 
 {% block content %}
 
     <div class="container">
       <div class="row">
         <div class="col-sm">
-            {% if user.is_authenticated %}
-              Conectado como: {{ user }}
-            {% endif %}
+            {#para o futuro#}
         </div>
-        <div class="col-sm">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form }}
-                <button type="submit">enviar</button>
+        <div class="col-sm-6 aligned-center">
+            <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+                {{ form.manual_text|attr:"class:form-control" | attr:"rows:15" | attr:"cols:10" | attr:"wrap:off"}}
+                <br>
+                {{ form.file_data }}<br><br>
+                <button type="submit" class="btn btn-info">Enviar</button>
             </form>
         </div>
         <div class="col-sm">
-          <a href="{% url 'logout' %}">Logout</a>
+            {#para o futuro#}
         </div>
       </div>
     </div>
-
-
-
-
 
 {% endblock content %}

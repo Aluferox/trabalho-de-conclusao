@@ -6,12 +6,11 @@ def handle_uploaded_file(sequencias):
 
     if isinstance(sequencias,str):
         sequencias = sequencias.split('\r\n')
-
-        cont=0
+        cont = 1
         with open(path, 'w') as file:
             for sequencia in sequencias:
-                cont+=1
-                file.write(f'>{cont}\n'+sequencia+'\n')
+                file.write(f'>{cont}\n{sequencia}\n')
+                cont += 1
         file.close()
     else:
         with open(path, 'wb+') as destination:
@@ -22,7 +21,7 @@ def handle_uploaded_file(sequencias):
     # stdout = subprocess.run(['/home/alufer/Downloads/astar_msa/bin/msa_astar', path],
     #                        stdout=subprocess.PIPE, encoding='utf8')
 
-    stdout = subprocess.run(['/home/ubuntu/deployer_astar/astar_msa/bin/msa_astar', path],
+    stdout = subprocess.run(['/home/alufer/Área de Trabalho/RepositoriosGitHub/deployer_astar/astar_msa/bin/msa_astar', path],
                              stdout=subprocess.PIPE, encoding='utf8')
 
     result = stdout.stdout.split('\n')
