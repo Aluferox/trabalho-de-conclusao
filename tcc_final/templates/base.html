@@ -24,14 +24,23 @@
                     <li class="nav-item">
                      <a class="nav-item nav-link active" href="{% url 'registrar' %}">Cadastrar</a>
                     </li>
+                    <li>
                 {% elif user.is_authenticated %}
                     <li class="nav-item active">
-                       <h3> Conectado como: {{ user }}</h3>
+                       <h3 class="text-white"> Conectado como: {{ user|capfirst }}</h3>
                     </li>
                 {% endif %}
             </ul>
             {% if user.is_authenticated %}
-                <a class="btn btn-danger my-2 my-sm-0" href="{% url 'logout' %}">Logout</a>
+                <a class="btn btn-danger my-2 my-sm-0 nav-item nav-link active text-white" href="{% url 'logout' %}">
+                    Logout
+                </a>
+                {% if '/ajuda/' not in request.path %}
+                    <a id="content" class="btn btn-secondary nav-item nav-link active text-white" href="{% url 'ajuda' %}">
+                        Ajuda
+                    </a>
+
+                {% endif %}
             {% endif %}
             {% if request.path != '/' and not user.is_authenticated  %}
                 <a class="btn btn-secondary my-2 my-sm-0" href="{% url 'home' %}">Home</a>

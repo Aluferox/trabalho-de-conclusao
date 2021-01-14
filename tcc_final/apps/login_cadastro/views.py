@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from .forms import CreateUsers
-from django.contrib.messages.views import SuccessMessageMixin
+
 from django.views.generic import CreateView
 
 

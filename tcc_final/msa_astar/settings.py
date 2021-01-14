@@ -25,7 +25,7 @@ SECRET_KEY = '5__e&g2v_6=n7d-ozun3qhmujs!5hm%^%84ljs&_9$^-^=vqc0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['54.207.210.56']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -132,5 +132,8 @@ STATIC_ROOT = BASE_DIR/'staticfiles'
 
 STATICFILES_DIRS = [BASE_DIR/'static']
 
+# Redirecionamento de Login e LogOut
 LOGIN_REDIRECT_URL = 'view_logado'
+
+LOGOUT_REDIRECT_URL = 'home'
 

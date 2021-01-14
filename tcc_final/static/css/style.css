@@ -31,3 +31,11 @@ div.test
     top: 20px;
     right: 0;
 }
+
+#content_voltar {
+    margin-top: 0;
+    margin-right: 43%;
+    position: absolute;
+    top: 20px;
+    right: 0;
+}

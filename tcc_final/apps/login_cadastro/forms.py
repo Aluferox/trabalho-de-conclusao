@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+
 class CreateUsers(UserCreationForm):
 
     username = forms.CharField(
@@ -35,7 +36,7 @@ class CreateUsers(UserCreationForm):
         label='',
         widget=forms.PasswordInput(attrs={'placeholder': 'Repita a Senha'}),
         strip=False,
-        help_text=_("Entre Com a Mesma Senha de Antes, Para Verificação."),
+        help_text=_(""),
     )
 
     class Meta:
@@ -46,7 +47,7 @@ class CreateUsers(UserCreationForm):
         username = self.cleaned_data['username']
         if User.objects.filter(username=username):
             raise ValidationError(
-                'Usuário Já Existe.'
+                _('Usuário Já Existe.'),
             )
         return username
 
@@ -55,13 +56,13 @@ class CreateUsers(UserCreationForm):
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
             raise ValidationError(
-                'Senhas Diferentes.'
+                _('Senhas Diferentes.')
             )
         return password2
 
     def clean_email(self):
         email = self.cleaned_data['email']
         if User.objects.filter(email=email):
-            raise ValidationError (
-                'Email Já Cadastrado.'
+            raise ValidationError(
+                _('Email Já Cadastrado.')
             )

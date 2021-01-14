@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="col-sm">
+        <h1 class="aligned-center">Formatos Aceitos</h1>
+    </div>
+    {% if user.is_authenticated %}
+        <a href="{% url 'view_logado' %}" id="content" class="btn btn-warning nav-item nav-link active text-white">
+            Voltar
+        </a>
+    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <br>
+                <h5 class="aligned-center">Digitando na caixa de Texto</h5> <br>
+                <strong>
+                Exemplo 1 - Caixa de Texto
+                    <p class="text-success">
+                        >1<br>
+                        AAAA<br>
+                        >2<br>
+                        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA<br>
+                        >3<br>
+                        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA<br>
+                    </p>
+                </strong>
+
+                <strong>
+                    Exemplo 2 - Caixa de Texto
+                    <p class="text-success">
+                        >1<br>
+                        AA<br>
+                        A<br>
+                        A<br>
+                        >2<br>
+                        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA<br>
+                        AAAAAAABA<br>
+                        >3<br>
+                        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA<br>
+                    </p>
+                </strong>
+            </div>
+
+            <div class="col-sm">
+                <br>
+                <h5 class="aligned-center">Enviando Arquivos</h5> <br>
+                <strong>
+                    Exemplo 1 - Arquivos
+                    <p class="text-success">
+                        >1<br>
+                        A<br>
+                        A<br>
+                        AA<br>
+                        >2<br>
+                        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                        AAAAAABA<br>
+                        >3<br>
+                        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA
+                    </p>
+                </strong>
+
+                <strong>
+                     Exemplo 2 - Arquivos
+                     <p class="text-success">
+                        >1<br>
+                        AAAA<br>
+                        >2<br>
+                        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA<br>
+                        >3<br>
+                        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA<br>
+                    </p>
+                </strong>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
