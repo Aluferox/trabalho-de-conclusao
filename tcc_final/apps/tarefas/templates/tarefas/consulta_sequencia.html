@@ -1,0 +1,64 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Title</title>
+</head>
+<body style="background-color: #00D5B1">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+         <a class="navbar-brand" href="https://www.ifb.edu.br/">
+            <img src="/media/IFBVertical.png" width="50" height="50" alt="ifb">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% if not user.is_authenticated %}
+                    <li class="nav-item active">
+                        <a class="nav-item nav-link active" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                     <a class="nav-item nav-link active" href="{% url 'registrar' %}">Cadastrar</a>
+                    </li>
+                    <li>
+                {% elif user.is_authenticated %}
+                    <li class="nav-item active">
+                       <h3 class="text-white"> Conectado como: {{ user|capfirst }}</h3>
+                    </li>
+                {% endif %}
+            </ul>
+                {% if user.is_authenticated %}
+                    <a class="btn btn-danger my-2 my-sm-0 nav-item nav-link active text-white" href="{% url 'logout' %}">
+                        Logout
+                    </a>
+
+                {% endif %}
+
+                <a id="content" class="btn btn-secondary nav-item nav-link active text-white" href="{% url 'ajuda' %}">
+                    Ajuda
+                </a>
+            {% if request.path != '/' and not user.is_authenticated  %}
+                <a class="btn btn-secondary my-2 my-sm-0" href="{% url 'home' %}">Home</a>
+            {% endif %}
+        </div>
+    </nav>
+
+<div class="container">
+  <div class="row">
+      <div><h1 class="texto_consulta">Consulte Os Resultados De Suas Sequências.</h1></div>
+    <div class="col-sm-8 result_task_center">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.task_id|attr:"class:form-control"|attr:"placeholder:Dígite o Id Da Sua Sequência Aqui"}}
+            <button type="submit" class="btn btn-info button_consultar">Consultar</button>
+        </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

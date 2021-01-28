@@ -29,6 +29,6 @@
 {% endblock content %}
 
 {% block static %}
-    {{ result|json_script:"result" }}
+    {{ task_result|json_script:"task_result" }}
     <script src="{% static 'js/colorir_sequencia.js' %}"></script>
 {% endblock static %}

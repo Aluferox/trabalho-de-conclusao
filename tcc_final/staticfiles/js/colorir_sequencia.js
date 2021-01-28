@@ -1,6 +1,6 @@
 let table = "";
-const sequencia = JSON.parse(document.getElementById('result').textContent)
-
+const sequencia = JSON.parse(document.getElementById('task_result').textContent)
+console.log('teste')
 for (let i = 0; i < sequencia.length ; i++) {
   table +="<tr>"
     for (let j = 0; j < sequencia[i].length ; j++) {
@@ -52,10 +52,24 @@ for (let i = 0; i < sequencia.length ; i++) {
         } else if (sequencia[i][j] === "-"){
             table += `<td style="color: #b50baf; font-weight:bold;">${sequencia[i][j]}</td>`
         }
+
     }
     table += "</tr>"
     document.getElementById("result_sequencia").innerHTML = table
 }
 
 
+function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
 
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+}

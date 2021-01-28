@@ -24,5 +24,6 @@ urlpatterns = [
     path('', include('apps.core.urls')),
     path('msa/', include('apps.msa_astar_logado.urls')),
     path('registros/', include('apps.login_cadastro.urls')),
+    path('sequencias/', include('apps.tarefas.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

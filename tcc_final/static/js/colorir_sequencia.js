@@ -1,5 +1,5 @@
 let table = "";
-const sequencia = JSON.parse(document.getElementById('result').textContent)
+const sequencia = JSON.parse(document.getElementById('task_result').textContent)
 console.log('teste')
 for (let i = 0; i < sequencia.length ; i++) {
   table +="<tr>"
@@ -58,5 +58,15 @@ for (let i = 0; i < sequencia.length ; i++) {
     document.getElementById("result_sequencia").innerHTML = table
 }
 
+function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("copy");
 
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+}

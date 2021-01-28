@@ -32,10 +32,49 @@ div.test
     right: 0;
 }
 
+.center_page {
+    margin: auto;
+    width:50%;
+    border: 3px solid dodgerblue;
+    padding: 10px;
+}
+
 #content_voltar {
     margin-top: 0;
-    margin-right: 20%;
+    margin-right: 43%;
     position: absolute;
     top: 20px;
     right: 0;
+}
+
+.result_task_center {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align:center;
+  color: white;
+  /* pura mágica */
+  position: absolute;
+  top: 50%; /* posiciona na metade da tela */
+  margin-top: -25px; /* e retrocede metade da altura */
+}
+
+.button_consultar {
+
+    position: absolute;
+    top: 0%;
+    margin-left:49%;
+    margin-top:0%;
+}
+
+.texto_consulta {
+    position: absolute;
+    top: 23%;
+    text-align: center;
+    margin-top:0%;
+    width: 100%;
+    height: 50px;
+    margin-left: -15%;
+    text-align:center;
+    color: white;
 }

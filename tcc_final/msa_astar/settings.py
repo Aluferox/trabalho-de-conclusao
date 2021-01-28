@@ -25,7 +25,7 @@ SECRET_KEY = '5__e&g2v_6=n7d-ozun3qhmujs!5hm%^%84ljs&_9$^-^=vqc0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '54.207.210.56', 'ec2-54-207-210-56.sa-east-1.compute.amazonaws.com']
 
 
 # Application definition
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'apps.login_cadastro',
     'apps.msa_astar_logado',
     'widget_tweaks',
+    'msa_astar',
+    'apps.tarefas',
 ]
 
 MIDDLEWARE = [
@@ -103,6 +105,21 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+#Configurações Celery
+from kombu.utils.url import safequote
+
+AWS_ACCESS_KEY_ID = safequote('AKIAQJ57JJK4MD4G4VFL')
+AWS_SECRET_ACCESS_KEY = safequote('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')
+
+CELERY_BROKER_TRANSPORT_OPTIONS = {
+    'region': 'sa-east-1',
+}
+
+CELERY_BROKER_URL = f'sqs://{AWS_ACCESS_KEY_ID}:{AWS_SECRET_ACCESS_KEY}@'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
 
 
 # Internationalization
