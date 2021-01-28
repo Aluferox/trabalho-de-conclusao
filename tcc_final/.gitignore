@@ -1,7 +1,6 @@
 .idea/
 TCC_final/.idea/
 TCC_final/__pycache__/
-env
 msa_star.pem
 TCC_final/apps/core/__pycache__/
 TCC_final/apps/msa_astar_logado/__pycache__/views.cpython-38.pyc
