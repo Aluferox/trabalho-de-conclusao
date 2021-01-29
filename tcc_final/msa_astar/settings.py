@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -25,11 +24,9 @@ SECRET_KEY = '5__e&g2v_6=n7d-ozun3qhmujs!5hm%^%84ljs&_9$^-^=vqc0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '54.207.210.56', 'ec2-54-207-210-56.sa-east-1.compute.amazonaws.com']
-
+ALLOWED_HOSTS = ['127.0.0.1',]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -113,14 +110,13 @@ AWS_ACCESS_KEY_ID = safequote('AKIAQJ57JJK4MD4G4VFL')
 AWS_SECRET_ACCESS_KEY = safequote('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')
 
 CELERY_BROKER_TRANSPORT_OPTIONS = {
-    'region': 'sa-east-1',
+    'region': 'us-east-1',
 }
 
-CELERY_BROKER_URL = f'sqs://{AWS_ACCESS_KEY_ID}:{AWS_SECRET_ACCESS_KEY}@'
+CELERY_BROKER_URL = f'sqs://{AWS_ACCESS_KEY_ID}:{AWS_SECRET_ACCESS_KEY}@:80'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

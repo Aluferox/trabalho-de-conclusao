@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .forms import HomeForm
 from msa_astar.celeryconfig import app
 from apps.tarefas.models import TasksResults
 from leitura_arquivos import handling_tasks
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 import time
-
 
 def home(request):
     sequencia= []
@@ -21,7 +22,7 @@ def home(request):
                     text_simple = form.cleaned_data['manual_text']
                     sequencia.append(text_simple.replace('\r',''))
 
-            res = app.send_task('celeryworker.tasks.alinhar_sequencias', args=[sequencia], queue='tarefas', kwargs={})
+            res = app.send_task('celery_worker.tasks.alinhar_sequencias', args=[sequencia], queue='tarefas', kwargs={})
 
             time.sleep(2)
             request.path = None
@@ -40,8 +41,7 @@ def home(request):
                     }
                 )
             except TasksResults.DoesNotExist:
-                request.session['id'] = res.id
-                return redirect('token')
+                return HttpResponseRedirect(reverse('token', kwargs={'task_id':res.id}))
 
     else:
         form = HomeForm()

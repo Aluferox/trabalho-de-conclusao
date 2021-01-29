@@ -18,9 +18,11 @@
             <div class="col-sm-6 center_page aligned-center" >
                 <p><h1>Este é o Id da Sua Sequência.</h1></p><br>
                 <div class="input-group mb-3">
-            <input id="copy" type="text" class="form-control" value="{{ request.session.id }}" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <input id="copy" type="text" class="form-control" value="{{ task_id }}" aria-label="Recipient's username" aria-describedby="basic-addon2">
             <div class="input-group-append">
-            <button class="btn btn-outline-secondary" onclick="myFunction()" type="button">Copiar</button>
+                <button type="button" class="btn btn-link" onclick="myFunction()" style="color:dodgerblue">
+                    <b>Copiar</b>
+                </button>
             </div>
         </div>
                 <p><h2><a href="{% url 'consulta_seq' %}"> Consulte o Resultado Aqui.</a></h2></p>

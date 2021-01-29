@@ -1,10 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .forms import HomeForm
 from msa_astar.celeryconfig import app
 from apps.tarefas.models import TasksResults
 from leitura_arquivos import handling_tasks
 from django.contrib.auth.decorators import login_required
 import time
+
 
 @login_required
 def view_logado(request):
@@ -22,8 +25,7 @@ def view_logado(request):
                     text_simple = form.cleaned_data['manual_text']
                     sequencia.append(text_simple.replace('\r',''))
 
-
-            res = app.send_task('celeryworker.tasks.alinhar_sequencias', args=[sequencia], queue='tarefas', kwargs={})
+            res = app.send_task('celery_worker.tasks.alinhar_sequencias', args=[sequencia], queue='tarefas', kwargs={})
 
             time.sleep(2)
             request.path = '/msa/star/'
@@ -42,9 +44,7 @@ def view_logado(request):
                     }
                 )
             except TasksResults.DoesNotExist:
-                request.session['id'] = res.id
-                return redirect('token')
-
+                return HttpResponseRedirect(reverse('token', kwargs={'task_id': res.id}))
     else:
         form = HomeForm()
     return render(request, 'msa_astar_logado/page_main.html', {'form': form})

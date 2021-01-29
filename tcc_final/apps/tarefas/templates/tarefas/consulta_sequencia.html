@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <title>Title</title>
+    <title>Consultas</title>
 </head>
 <body style="background-color: #00D5B1">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -47,18 +47,22 @@
         </div>
     </nav>
 
-<div class="container">
-  <div class="row">
-      <div><h1 class="texto_consulta">Consulte Os Resultados De Suas Sequências.</h1></div>
-    <div class="col-sm-8 result_task_center">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.task_id|attr:"class:form-control"|attr:"placeholder:Dígite o Id Da Sua Sequência Aqui"}}
-            <button type="submit" class="btn btn-info button_consultar">Consultar</button>
-        </form>
+    <div class="container">
+      <div class="row">
+          {% if message_error %}
+            <h1 class="texto_consulta" style="color: firebrick"> {{ message_error }} </h1>
+          {% else %}
+            <h1 class="texto_consulta">Consulte Os Resultados De Suas Sequências.</h1>
+          {% endif %}
+        <div class="col-sm-7 result_task_center">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.task_id|attr:"class:form-control"|attr:"placeholder:Dígite o Id Da Sua Sequência Aqui"}}
+                <button type="submit" class="btn btn-secondary button_consultar">Consultar</button>
+            </form>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 </body>
 </html>
 
