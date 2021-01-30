@@ -1,4 +1,3 @@
-from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import TasksResults
 from leitura_arquivos import handling_tasks
@@ -14,7 +13,12 @@ def consultar_sequencia(request):
             task_id = form.cleaned_data['task_id']
             try:
                 task_id = TasksResults.objects.get(id_task=task_id)
+
+                if len(task_id.result) <= 132:
+                    return redirect('ajuda')
+
                 result, phases = handling_tasks(task_id.result)
+
             except TasksResults.DoesNotExist:
                 message = 'Sua Sequência Ainda Não Está Alinhada.'
                 return render(

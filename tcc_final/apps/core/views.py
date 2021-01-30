@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import HomeForm
 from msa_astar.celeryconfig import app
 from apps.tarefas.models import TasksResults
@@ -9,6 +9,9 @@ import time
 
 def home(request):
     sequencia= []
+    if request.user.is_authenticated:
+        return redirect('view_logado')
+
     if request.method == 'POST':
         form = HomeForm(request.POST, request.FILES)
         if form.is_valid():
@@ -28,8 +31,12 @@ def home(request):
             request.path = None
 
             try:
-                result_tasks = TasksResults.objects.get(id_task=res.id)
-                result, phases = handling_tasks(result_tasks.result[1:-1])
+                task_id = TasksResults.objects.get(id_task=res.id)
+
+                if len(task_id.result) <= 132:
+                    return redirect('ajuda')
+
+                result, phases = handling_tasks(task_id.result[1:-1])
                 return render(
                     request,
                     'core/resultado.html',

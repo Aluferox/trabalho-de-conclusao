@@ -11,9 +11,17 @@
             {#para o futuro#}
         </div>
         <div class="col-sm-6 aligned-center">
+             {% if form.non_field_errors %}
+              <div class="alert alert-danger" role="alert">
+                {% for error in form.non_field_errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% endif %}
             <form method="post" enctype="multipart/form-data"> {% csrf_token %}
                 {{ form.manual_text|attr:"class:form-control" | attr:"rows:15" | attr:"cols:10" | attr:"wrap:off"}}
-                <br>
+                 <br>
+                    <p> Enviar Arquivo .fasta</p>
                 {{ form.file_data }}<br><br>
                 <button type="submit" class="btn btn-info">Enviar</button>
             </form>

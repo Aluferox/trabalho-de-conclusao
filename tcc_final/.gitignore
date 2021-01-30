@@ -7,13 +7,12 @@ tcc_final/apps/core/__pycache__/
 tcc_final/apps/msa_astar_logado/__pycache__/views.cpython-38.pyc
 msa_astar/__pycache__/
 msa_astar/__pycache__/settings.cpython-38.pyc
- msa_astar/__pycache__/urls.cpython-38.pyc
- msa_astar/__pycache__/wsgi.cpython-38.pyc
+msa_astar/__pycache__/urls.cpython-38.pyc
+msa_astar/__pycache__/wsgi.cpython-38.pyc
 __pycache__/leitura_arquivos.cpython-38.pyc
  __pycache__/validators.cpython-38.pyc
 apps/__pycache__/
 apps/core/__pycache__/
-apps/tarefas/__pycache__/
 apps/core/migrations/__pycache__/
 apps/login_cadastro/__pycache__/
 apps/login_cadastro/migrations/__pycache__/
@@ -23,7 +22,6 @@ uwsgi_params
 mysite_nginx
 tcc_final/apps/msa_astar_logado/__pycache__/
 tcc_final/apps/core/__pycache__/
-tcc_final/__pycache__/
 tcc_final/__pycache__/
 tcc_final/apps/tarefas/__pycache__/
 tcc_final/apps/tarefas/__pycache__/views.cpython-38.pyc

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .forms import HomeForm
@@ -31,8 +31,12 @@ def view_logado(request):
             request.path = '/msa/star/'
 
             try:
-                result_tasks = TasksResults.objects.get(id_task=res.id)
-                result, phases = handling_tasks(result_tasks.result[1:-1])
+                task_id = TasksResults.objects.get(id_task=res.id)
+
+                if len(task_id.result) <= 132:
+                    return redirect('ajuda')
+
+                result, phases = handling_tasks(task_id.result[1:-1])
                 return render(
                     request,
                     'msa_astar_logado/resultado.html',

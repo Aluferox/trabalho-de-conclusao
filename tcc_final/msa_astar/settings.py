@@ -110,7 +110,7 @@ AWS_ACCESS_KEY_ID = safequote('AKIAQJ57JJK4MD4G4VFL')
 AWS_SECRET_ACCESS_KEY = safequote('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')
 
 CELERY_BROKER_TRANSPORT_OPTIONS = {
-    'region': 'us-east-1',
+    'region': 'sa-east-1',
 }
 
 CELERY_BROKER_URL = f'sqs://{AWS_ACCESS_KEY_ID}:{AWS_SECRET_ACCESS_KEY}@:80'
