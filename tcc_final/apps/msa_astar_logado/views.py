@@ -25,7 +25,7 @@ def view_logado(request):
                     text_simple = form.cleaned_data['manual_text']
                     sequencia.append(text_simple.replace('\r',''))
 
-            res = app.send_task('celery_worker.tasks.alinhar_sequencias', args=[sequencia], queue='tarefas', kwargs={})
+            res = app.send_task('celery_django.tasks.alinhar_sequencias', args=[sequencia], queue='tarefas', kwargs={})
 
             time.sleep(2)
             request.path = '/msa/star/'
